@@ -6,7 +6,7 @@ projects = {
     title: "Розробка сайту",
     team: ["Іван Петренко", "Марія Коваль"],
     tags: ["Web", "Ruby", "Rails"],
-    client: "ТОВ Ромашка",
+    client: "Ромашка",
     start_date: "2024-03-01",
     deadline: "2024-06-01",
     budget: 50000.00,
@@ -25,7 +25,7 @@ projects = {
 }
 
 puts "=== Початковий список ==="
-ProjectManager.list_projects(projects)
+list_projects(projects)
 
 new_project = {
   title: "CRM система",
@@ -37,23 +37,10 @@ new_project = {
   budget: 120000.00,
   status: "planned"
 }
-ProjectManager.add_project(projects, new_project)
 
-ProjectManager.edit_project(projects, 2, { status: "in_progress", budget: 35000.00 })
+loaded_from_json = load_from_json("projects.json")
+list_projects(loaded_from_json)
+delete_project(projects, 1)
 
-puts "\n=== Пошук за назвою 'сайт' ==="
-puts ProjectManager.find_by_title(projects, "сайт").inspect
-
-puts "\n=== Фільтрація за статусом 'in_progress' ==="
-puts ProjectManager.filter_by_status(projects, "in_progress").inspect
-
-puts "\n=== Фільтрація за тегом 'Web' ==="
-puts ProjectManager.filter_by_tag(projects, "Web").inspect
-
-ProjectManager.save_to_json(projects, "projects.json")
-loaded_from_json = ProjectManager.load_from_json("projects.json")
-
-ProjectManager.delete_project(projects, 1)
-
-ProjectManager.edit_project(projects, 999, { status: "cancelled" }) 
-ProjectManager.load_from_yaml("missing_file.yml")
+loaded_from_yaml = load_from_yaml("projects.yaml")
+list_projects(loaded_from_yaml)
