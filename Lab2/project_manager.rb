@@ -38,7 +38,7 @@ class ProjectManager
     @collection.select { |_, p| p.status == status }
   end
 
-  # YAML серіалізація (нативна)
+  # YAML серіалізація 
   def save_to_yaml(filename)
     File.write(filename, YAML.dump(@collection))
   end
@@ -49,7 +49,7 @@ class ProjectManager
     true
   end
 
-  # JSON серіалізація (через to_h / from_h)
+  # JSON серіалізація 
   def save_to_json(filename)
     json_data = @collection.transform_values(&:to_h)
     File.write(filename, JSON.pretty_generate(json_data))
