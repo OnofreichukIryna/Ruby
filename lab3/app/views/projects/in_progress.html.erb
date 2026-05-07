@@ -1,0 +1,15 @@
+<h1>Активні проєкти (In Progress)</h1>
+<%= link_to "Повернутися до всіх проєктів", projects_path %>
+
+<div id="projects">
+  <% if @projects.any? %>
+    <% @projects.each do |project| %>
+      <p>
+        <strong><%= project.title %></strong> - Дедлайн: <%= project.deadline %>
+        <%= link_to "Деталі", project %>
+      </p>
+    <% end %>
+  <% else %>
+    <p>Наразі активних проєктів немає.</p>
+  <% end %>
+</div>

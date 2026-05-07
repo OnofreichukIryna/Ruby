@@ -1,0 +1,14 @@
+<h1>Список проєктів</h1>
+<%= link_to "Додати новий проєкт", new_project_path %> |
+<%= link_to "Активні проєкти (In Progress)", in_progress_projects_path %> |
+<%= link_to "Категорії", categories_path %>
+
+<div id="projects">
+  <% @projects.each do |project| %>
+    <p>
+      <strong><%= project.title %></strong> 
+      (Категорія: <%= project.category %>, Статус: <%= project.status %>)
+      <%= link_to "Деталі", project %>
+    </p>
+  <% end %>
+</div>

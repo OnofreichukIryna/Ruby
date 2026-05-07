@@ -1,0 +1,14 @@
+<h1>Деталі проєкту: <%= @project.title %></h1>
+
+<ul>
+  <li><strong>Категорія:</strong> <%= @project.category %></li>
+  <li><strong>Клієнт:</strong> <%= @project.client %></li>
+  <li><strong>Тег:</strong> <%= @project.main_tag %></li>
+  <li><strong>Терміни:</strong> <%= @project.start_date %> — <%= @project.deadline %></li>
+  <li><strong>Бюджет:</strong> <%= @project.budget %></li>
+  <li><strong>Статус:</strong> <%= @project.status %></li>
+</ul>
+
+<%= link_to "Редагувати", edit_project_path(@project) %> |
+<%= link_to "Назад до списку", projects_path %> |
+<%= button_to "Видалити", @project, method: :delete, data: { turbo_confirm: 'Ви впевнені?' } %>

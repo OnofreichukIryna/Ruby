@@ -1,0 +1,45 @@
+<%= form_with(model: project) do |form| %>
+  <div>
+    <%= form.label :title, "Назва", style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :category, "Категорія", style: "display: block" %>
+    <%= form.select :category, Category.pluck(:name), prompt: "Оберіть категорію" %>
+  </div>
+
+  <div>
+    <%= form.label :main_tag, "Головний тег", style: "display: block" %>
+    <%= form.text_field :main_tag %>
+  </div>
+
+  <div>
+    <%= form.label :client, "Клієнт", style: "display: block" %>
+    <%= form.text_field :client %>
+  </div>
+
+  <div>
+    <%= form.label :start_date, "Дата початку", style: "display: block" %>
+    <%= form.date_field :start_date %>
+  </div>
+
+  <div>
+    <%= form.label :deadline, "Дедлайн", style: "display: block" %>
+    <%= form.date_field :deadline %>
+  </div>
+
+  <div>
+    <%= form.label :budget, "Бюджет", style: "display: block" %>
+    <%= form.number_field :budget, step: 0.01 %>
+  </div>
+
+  <div>
+    <%= form.label :status, "Статус", style: "display: block" %>
+    <%= form.select :status, Project.statuses.keys %>
+  </div>
+
+  <div>
+    <%= form.submit "Зберегти" %>
+  </div>
+<% end %>
