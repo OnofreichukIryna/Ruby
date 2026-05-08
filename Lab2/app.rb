@@ -7,7 +7,7 @@ class App
   def initialize
     @manager = ProjectManager.new
     load_initial_data
-  end
+  end 
 
   def run
     loop do

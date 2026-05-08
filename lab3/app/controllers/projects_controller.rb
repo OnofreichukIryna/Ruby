@@ -20,7 +20,7 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     if @project.save
-      redirect_to @project, notice: 'Проєкт успішно створено.'
+      redirect_to @project, notice: "Проєкт успішно створено."
     else
       render :new, status: :unprocessable_entity
     end
@@ -28,7 +28,7 @@ class ProjectsController < ApplicationController
 
   def update
     if @project.update(project_params)
-      redirect_to @project, notice: 'Проєкт успішно оновлено.'
+      redirect_to @project, notice: "Проєкт успішно оновлено."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -36,7 +36,7 @@ class ProjectsController < ApplicationController
 
   def destroy
     @project.destroy
-    redirect_to projects_url, notice: 'Проєкт успішно видалено.'
+    redirect_to projects_url, notice: "Проєкт успішно видалено."
   end
 
   private
