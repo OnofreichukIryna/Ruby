@@ -1,0 +1,29 @@
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h1>Категорії</h1>
+  <%= link_to "Додати категорію", new_category_path, class: "btn btn-success shadow-sm" %>
+</div>
+
+<div class="card shadow-sm border-0">
+  <table class="table table-striped table-hover align-middle mb-0">
+    <thead class="table-dark">
+      <tr>
+        <th>Назва категорії</th>
+        <th class="text-end">Дії</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @categories.each do |category| %>
+        <tr>
+          <td class="fw-bold"><%= category.name %></td>
+          <td class="text-end">
+            <div class="btn-group" role="group">
+              <%= link_to "Деталі", category, class: "btn btn-sm btn-info text-white" %>
+              <%= link_to "Редагувати", edit_category_path(category), class: "btn btn-sm btn-outline-primary" %>
+              <%= button_to "Видалити", category, method: :delete, data: { turbo_confirm: 'Ви впевнені?' }, class: "btn btn-sm btn-danger" %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
