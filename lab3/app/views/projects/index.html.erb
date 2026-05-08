@@ -7,7 +7,7 @@
   <% @projects.each do |project| %>
     <p>
       <strong><%= project.title %></strong> 
-      (Категорія: <%= project.category %>, Статус: <%= project.status %>)
+      (Категорія: <%= project.category %>, Команда: <%= project.team %>, Статус: <%= project.status %>)
       <%= link_to "Деталі", project %>
     </p>
   <% end %>

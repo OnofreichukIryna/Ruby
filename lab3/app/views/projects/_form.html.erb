@@ -5,6 +5,11 @@
   </div>
 
   <div>
+    <%= form.label :team, "Команда", style: "display: block" %>
+    <%= form.text_field :team %>
+  </div>
+
+  <div>
     <%= form.label :category, "Категорія", style: "display: block" %>
     <%= form.select :category, Category.pluck(:name), prompt: "Оберіть категорію" %>
   </div>
