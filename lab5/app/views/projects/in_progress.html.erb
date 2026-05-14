@@ -1,0 +1,36 @@
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h1>Активні проєкти (In Progress)</h1>
+  <%= link_to "Всі проєкти", projects_path, class: "btn btn-secondary" %>
+</div>
+
+<% if @projects.any? %>
+  <div class="card shadow-sm border-0">
+    <table class="table table-striped table-hover align-middle mb-0">
+      <thead class="table-dark">
+        <tr>
+          <th>Назва</th>
+          <th>Категорія</th>
+          <th>Команда</th>
+          <th>Дедлайн</th>
+          <th class="text-end">Дії</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @projects.each do |project| %>
+          <tr>
+            <td class="fw-bold"><%= project.title %></td>
+            <td><%= project.category %></td>
+            <td><%= project.team %></td>
+            <td><%= deadline_badge(project) %></td> <td class="text-end">
+              <%= link_to "Деталі", project, class: "btn btn-sm btn-info text-white" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% else %>
+  <div class="alert alert-info shadow-sm" role="alert">
+    <i class="bi bi-info-circle me-2"></i> Наразі активних проєктів немає.
+  </div>
+<% end %>

@@ -1,0 +1,12 @@
+<div class="row mt-4">
+  <div class="col-md-6 offset-md-3">
+    <h1 class="mb-4 text-center">Редагувати категорію</h1>
+    
+    <%= render "form", category: @category %>
+    
+    <div class="d-flex justify-content-between mt-3">
+      <%= link_to "Переглянути", @category, class: "btn btn-info text-white" %>
+      <%= link_to "Назад до списку", categories_path, class: "btn btn-secondary" %>
+    </div>
+  </div>
+</div>
