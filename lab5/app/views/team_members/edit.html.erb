@@ -1,12 +1,12 @@
-<% content_for :title, "Editing team member" %>
-
-<h1>Editing team member</h1>
-
-<%= render "form", team_member: @team_member %>
-
-<br>
-
-<div>
-  <%= link_to "Show this team member", @team_member %> |
-  <%= link_to "Back to team members", team_members_path %>
+<div class="row mt-4">
+  <div class="col-md-6 offset-md-3">
+    <h1 class="mb-4 text-center">Редагувати учасника</h1>
+    
+    <%= render "form", team_member: @team_member %>
+    
+    <div class="d-flex justify-content-between mt-3">
+      <%= link_to "Переглянути", @team_member, class: "btn btn-info text-white" %>
+      <%= link_to "Назад до списку", team_members_path, class: "btn btn-secondary" %>
+    </div>
+  </div>
 </div>

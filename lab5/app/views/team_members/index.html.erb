@@ -1,16 +1,33 @@
-<p style="color: green"><%= notice %></p>
-
-<% content_for :title, "Team members" %>
-
-<h1>Team members</h1>
-
-<div id="team_members">
-  <% @team_members.each do |team_member| %>
-    <%= render team_member %>
-    <p>
-      <%= link_to "Show this team member", team_member %>
-    </p>
-  <% end %>
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h1>Учасники команди</h1>
+  <%= link_to "Додати учасника", new_team_member_path, class: "btn btn-success shadow-sm" %>
 </div>
 
-<%= link_to "New team member", new_team_member_path %>
+<div class="card shadow-sm border-0">
+  <table class="table table-striped table-hover align-middle mb-0">
+    <thead class="table-dark">
+      <tr>
+        <th>Ім'я</th>
+        <th>Роль</th>
+        <th>ID Проєкту</th>
+        <th class="text-end">Дії</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @team_members.each do |team_member| %>
+        <tr>
+          <td class="fw-bold"><%= team_member.name %></td>
+          <td><span class="badge bg-secondary"><%= team_member.role %></span></td>
+          <td><%= team_member.project_id %></td>
+          <td class="text-end">
+            <div class="btn-group" role="group">
+              <%= link_to "Деталі", team_member, class: "btn btn-sm btn-info text-white" %>
+              <%= link_to "Редагувати", edit_team_member_path(team_member), class: "btn btn-sm btn-outline-primary" %>
+              <%= button_to "Видалити", team_member, method: :delete, data: { turbo_confirm: 'Ви впевнені?' }, class: "btn btn-sm btn-danger" %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
