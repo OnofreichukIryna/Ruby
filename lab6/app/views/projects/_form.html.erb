@@ -1,0 +1,73 @@
+<%= form_with(model: project, class: "card p-4 shadow-sm mb-4") do |form| %>
+  <% if project.errors.any? %>
+    <div class="alert alert-danger">
+      <h4 class="alert-heading">Помилки:</h4>
+      <ul class="mb-0">
+        <% project.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :title, "Назва", class: "form-label fw-bold" %>
+    <%= form.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :description, "Опис проєкту", class: "form-label fw-bold" %>
+    <%= form.text_area :description, rows: 4, class: "form-control" %>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <%= form.label :category_id, "Категорія", class: "form-label fw-bold" %>
+      <%= form.collection_select :category_id, Category.all, :id, :name, { prompt: "Оберіть категорію..." }, class: "form-select" %>
+    </div>
+    <div class="col-md-6 mb-3">
+      <%= form.label :status, "Статус", class: "form-label fw-bold" %>
+      <%= form.select :status, Project.statuses.keys, {}, class: "form-select" %>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :client, "Клієнт", class: "form-label fw-bold" %>
+    <%= form.text_field :client, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label fw-bold">Теги проєкту</label>
+    <div class="border p-3 rounded bg-light">
+      <% if Tag.any? %>
+        <% Tag.all.each do |tag| %>
+          <div class="form-check form-check-inline">
+            <%= check_box_tag 'project[tag_ids][]', tag.id, project.tags.include?(tag), id: "project_tag_#{tag.id}", class: "form-check-input" %>
+            <%= label_tag "project_tag_#{tag.id}", tag.name, class: "form-check-label" %>
+          </div>
+        <% end %>
+      <% else %>
+        <span class="text-muted">Ще немає жодного тегу. Спочатку додайте їх у розділі "Теги".</span>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 mb-3">
+      <%= form.label :start_date, "Дата початку", class: "form-label fw-bold" %>
+      <%= form.date_field :start_date, class: "form-control" %>
+    </div>
+    <div class="col-md-4 mb-3">
+      <%= form.label :deadline, "Дедлайн", class: "form-label fw-bold" %>
+      <%= form.date_field :deadline, class: "form-control" %>
+    </div>
+    <div class="col-md-4 mb-3">
+      <%= form.label :budget, "Бюджет", class: "form-label fw-bold" %>
+      <%= form.number_field :budget, step: 0.01, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="mt-2">
+    <%= form.submit "Зберегти проєкт", class: "btn btn-primary" %>
+  </div>
+<% end %>

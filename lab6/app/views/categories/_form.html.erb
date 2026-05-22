@@ -1,0 +1,21 @@
+<%= form_with(model: category, class: "card p-4 shadow-sm mb-4") do |form| %>
+  <% if category.errors.any? %>
+    <div class="alert alert-danger">
+      <h4>Помилки:</h4>
+      <ul class="mb-0">
+        <% category.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :name, "Назва категорії", class: "form-label fw-bold" %>
+    <%= form.text_field :name, class: "form-control", placeholder: "Наприклад: Web-розробка" %>
+  </div>
+
+  <div>
+    <%= form.submit "Зберегти категорію", class: "btn btn-primary w-100" %>
+  </div>
+<% end %>

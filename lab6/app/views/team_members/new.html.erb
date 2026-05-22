@@ -1,0 +1,11 @@
+<div class="row mt-4">
+  <div class="col-md-6 offset-md-3">
+    <h1 class="mb-4 text-center">Новий учасник команди</h1>
+    
+    <%= render "form", team_member: @team_member %>
+    
+    <div class="text-center mt-3">
+      <%= link_to "← Назад до списку", team_members_path, class: "btn btn-outline-secondary" %>
+    </div>
+  </div>
+</div>

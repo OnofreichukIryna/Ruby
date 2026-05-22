@@ -1,0 +1,49 @@
+<div class="card shadow-sm mt-4">
+  <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+    <h2 class="mb-0"><%= @project.title %></h2>
+    <%= deadline_badge(@project) %> </div>
+  <div class="card-body">
+    <ul class="list-group list-group-flush mb-4">
+      <li class="list-group-item"><strong>Опис:</strong> <%= @project.description %></li>
+      
+      <li class="list-group-item"><strong>Категорія:</strong> <%= @project.category.name if @project.category %></li>
+      
+      <li class="list-group-item"><strong>Клієнт:</strong> <%= @project.client %></li>
+      <li class="list-group-item"><strong>Команда:</strong> <%= @project.team %></li>
+      
+      <li class="list-group-item">
+        <strong>Теги:</strong>
+        <% if @project.tags.any? %>
+          <% @project.tags.each do |tag| %>
+            <span class="badge bg-secondary">#<%= tag.name %></span>
+          <% end %>
+        <% else %>
+          <span class="text-muted">Немає тегів</span>
+        <% end %>
+      </li>
+
+      <li class="list-group-item"><strong>Терміни:</strong> <%= @project.start_date %> — <%= @project.deadline %></li>
+      <li class="list-group-item"><strong>Бюджет:</strong> $<%= @project.budget %></li>
+      <li class="list-group-item"><strong>Статус:</strong> <%= @project.status %></li>
+    </ul>
+
+    <div class="mt-4 mb-3">
+      <h4>Учасники команди</h4>
+      <ul class="list-group mb-2">
+        <% @project.team_members.each do |member| %>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <%= member.name %>
+            <span class="badge bg-secondary rounded-pill"><%= member.role %></span>
+          </li>
+        <% end %>
+      </ul>
+      <%= link_to "Керувати всіма учасниками", team_members_path, class: "btn btn-outline-info btn-sm" %>
+    </div>
+
+    <div class="d-flex gap-2">
+      <%= link_to "Редагувати", edit_project_path(@project), class: "btn btn-primary" %>
+      <%= link_to "Назад до списку", projects_path, class: "btn btn-secondary" %>
+      <%= button_to "Видалити", @project, method: :delete, data: { turbo_confirm: 'Ви впевнені?' }, class: "btn btn-danger" %>
+    </div>
+  </div>
+</div>

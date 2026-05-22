@@ -1,0 +1,31 @@
+<%= form_with(model: team_member, class: "card p-4 shadow-sm mb-4") do |form| %>
+  <% if team_member.errors.any? %>
+    <div class="alert alert-danger">
+      <h4>Помилки:</h4>
+      <ul class="mb-0">
+        <% team_member.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :name, "Ім'я учасника", class: "form-label fw-bold" %>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :role, "Роль (Посада)", class: "form-label fw-bold" %>
+    <%= form.text_field :role, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :project_id, "ID Проєкту", class: "form-label fw-bold" %>
+    <%= form.number_field :project_id, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= form.submit "Зберегти учасника", class: "btn btn-primary w-100" %>
+  </div>
+<% end %>

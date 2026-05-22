@@ -1,0 +1,12 @@
+<div class="row justify-content-center mt-5">
+  <div class="col-md-5">
+    <div class="text-center mb-4">
+      <h1 class="fw-bold">Редагування тегу</h1>
+    </div>
+    <%= render "form", tag: @tag %>
+    <div class="d-flex justify-content-between mt-3">
+      <%= link_to "Скасувати", tags_path, class: "text-decoration-none text-secondary" %>
+      <%= link_to "Переглянути результат", @tag, class: "text-decoration-none" %>
+    </div>
+  </div>
+</div>

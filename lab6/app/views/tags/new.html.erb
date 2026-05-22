@@ -1,0 +1,10 @@
+<div class="row justify-content-center mt-5">
+  <div class="col-md-5">
+    <div class="text-center mb-4">
+      <h1 class="fw-bold">Новий тег</h1>
+      <p class="text-muted">Додайте ключове слово для класифікації проєктів</p>
+    </div>
+    <%= render "form", tag: @tag %>
+    <%= link_to "← Повернутися до списку", tags_path, class: "btn btn-link mt-3 w-100 text-decoration-none text-secondary" %>
+  </div>
+</div>

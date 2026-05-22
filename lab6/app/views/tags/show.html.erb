@@ -1,0 +1,21 @@
+<div class="row justify-content-center mt-5">
+  <div class="col-md-6">
+    <div class="card shadow border-0 overflow-hidden">
+      <div class="card-header bg-dark py-3">
+        <h5 class="text-white mb-0 text-center">Перегляд тегу</h5>
+      </div>
+      <div class="card-body py-5 text-center bg-light">
+        <p class="text-muted small text-uppercase fw-bold mb-2">Прев'ю тегу:</p>
+        <h1 class="display-1 mb-4">
+          <span class="badge rounded-pill bg-info text-dark shadow-sm">#<%= @tag.name %></span>
+        </h1>
+        <hr class="my-4 mx-5 opacity-25">
+        <div class="d-flex justify-content-center gap-3">
+          <%= link_to "Редагувати", edit_tag_path(@tag), class: "btn btn-primary px-4" %>
+          <%= link_to "Всі теги", tags_path, class: "btn btn-outline-secondary px-4" %>
+          <%= button_to "Видалити", @tag, method: :delete, data: { turbo_confirm: 'Ви впевнені?' }, class: "btn btn-link text-danger text-decoration-none" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<%= form_with(model: tag, class: "bg-white p-4 rounded shadow-sm border") do |form| %>
+  <% if tag.errors.any? %>
+    <div class="alert alert-danger shadow-sm">
+      <h5 class="alert-heading">Помилка збереження:</h5>
+      <ul class="mb-0">
+        <% tag.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-4">
+    <%= form.label :name, "Назва тегу", class: "form-label fw-bold" %>
+    <div class="input-group">
+      <span class="input-group-text bg-dark text-white">#</span>
+      <%= form.text_field :name, class: "form-control form-control-lg", placeholder: "Наприклад: Ruby, Web, Mobile" %>
+    </div>
+    <div class="form-text mt-2 text-muted">Символ решітки додасться автоматично при відображенні.</div>
+  </div>
+
+  <div class="d-grid">
+    <%= form.submit "Зберегти тег", class: "btn btn-primary btn-lg shadow" %>
+  </div>
+<% end %>
